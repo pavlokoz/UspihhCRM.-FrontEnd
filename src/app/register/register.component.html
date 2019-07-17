@@ -1,0 +1,47 @@
+<div class="main-div">
+    <md-card style="max-width: 500px; ">
+        <md-card-header>
+            <md-card-header-text>
+                <span class="md-title" style="text-align: center">Registration Form</span>
+            </md-card-header-text>
+        </md-card-header>
+        <form [formGroup]="registerForm" autocomplete="off" novalidate (ngSubmit)="register(registerForm.value)"
+            fxLayout="column wrap" fxLayoutAlign="center center">
+            <md-card-content>
+                <mat-form-field class="full-width">
+                    <input matInput formControlName="email" placeholder="Email">
+                    <mat-error *ngIf="hasError('email', 'required')">e-Mail  is required</mat-error>
+                    <mat-error *ngIf="hasError('email', 'pattern')">e-Mail is not valid</mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput type="password" formControlName="password" placeholder="Password">
+                    <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+                    <mat-error *ngIf="hasError('password', 'pattern')">Password is not valid</mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm Password">
+                    <mat-error *ngIf="hasError('confirmPassword', 'required')">Password is required</mat-error>
+                    <mat-error *ngIf="hasError('confirmPassword', 'pattern')">Password is not valid</mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput formControlName="firstName" placeholder="First Name">
+                    <mat-error *ngIf="hasError('firstName', 'required')">Name is required</mat-error>
+                    <mat-error *ngIf="hasError('firstName', 'pattern')">Name is not valid</mat-error>
+                </mat-form-field>
+                <mat-form-field  class="full-width">
+                    <input matInput formControlName="lastName" placeholder="Last Name">
+                    <mat-error *ngIf="hasError('lastName', 'required')">Name is required</mat-error>
+                    <mat-error *ngIf="hasError('lastName', 'pattern')">Name is not valid</mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Date of birth">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </md-card-content>
+            <mat-card-actions class="display-center" style="padding: 10px 0;">
+                <button mat-raised-button [disabled]="!registerForm.valid">Register</button>
+            </mat-card-actions>
+        </form>
+    </md-card>
+</div>

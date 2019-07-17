@@ -1,0 +1,11 @@
+<div *ngIf="isUserLogin; else NotAuthUser">
+    <app-home></app-home>
+</div>
+<ng-template #NotAuthUser>
+    <div *ngIf="hasRegisteredUsers; else FirstRegistration">
+        <app-login (loginEvent)="loginCallback()"></app-login>
+    </div>
+    <ng-template #FirstRegistration>
+        <app-register (registerEvent)="registerCallback()"></app-register>
+    </ng-template>
+</ng-template>
